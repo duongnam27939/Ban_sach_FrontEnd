@@ -6,19 +6,22 @@ import { AboutComponent } from './pages/about/about.component';
 import { LayoutAdminComponent } from './Layout/layout-admin/layout-admin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CartComponent } from './pages/cart/cart.component';
 
 const routes: Routes = [
   {
     path: '', component: LayoutUserComponent, children: [
-      {path: '', component:HomepagesComponent},
-      {path: 'about', component: AboutComponent}
+      { path: '', component: HomepagesComponent },
+      { path: 'about', component: AboutComponent },
+      { path: 'cart', component: CartComponent }
+
     ]
   },
   {
-    path:'admin',component:LayoutAdminComponent,children:[]
+    path: 'admin', component: LayoutAdminComponent, children: []
   },
-  {path:'sigup', component: SignupComponent},
-  {path:'login',component:LoginComponent}
+  { path: 'sigup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

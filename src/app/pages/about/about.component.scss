@@ -99,7 +99,7 @@ a:hover {
     margin-left: 20px;
     color: #645E5E;
     font-weight: 500;
-    // margin-top: -10px;
+    padding-top: 10px;
 }
 
 .span_price {
@@ -130,6 +130,7 @@ a:hover {
     margin-left: 20px;
     display: flex;
     align-items: center;
+    padding-top: 20px;
 }
 
 .decrease {
@@ -163,7 +164,7 @@ a:hover {
 
 
 .quantity1_text {
-    margin-top: 12px;
+    margin-top: -5px;
 }
 
 
@@ -194,7 +195,8 @@ a:hover {
 
 .call {
     margin-left: 20px;
-    margin-top: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
 }
 
