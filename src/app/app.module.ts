@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { HomepagesComponent } from './pages/homepages/homepages.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +25,16 @@ import { CartComponent } from './pages/cart/cart.component';
     HomepagesComponent,
     LoginComponent,
     SignupComponent,
-    CartComponent
+    CartComponent,
+    CategoryComponent,
+    CategoryAddComponent,
+    CategoryEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

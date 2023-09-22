@@ -7,6 +7,10 @@ import { LayoutAdminComponent } from './Layout/layout-admin/layout-admin.compone
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CartComponent } from './pages/cart/cart.component';
+import { CategoryComponent } from './pages/category/category.component';
+import { CategoryAddComponent } from './pages/category-add/category-add.component';
+import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
+
 
 const routes: Routes = [
   {
@@ -18,7 +22,11 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'admin', component: LayoutAdminComponent, children: []
+    path: 'admin', component: LayoutAdminComponent, children: [
+      { path: 'category', component: CategoryComponent },
+      { path: 'category/add', component: CategoryAddComponent },
+      { path: 'category/:id/edit', component: CategoryEditComponent }
+    ]
   },
   { path: 'sigup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
