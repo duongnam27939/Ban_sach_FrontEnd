@@ -17,6 +17,8 @@ export class CategoryComponent {
     private routers: Router) {
     this.category.getAllCategory().subscribe((data: any) => {
       this.categorys = data
+      console.log(data);
+      
     })
   }
 

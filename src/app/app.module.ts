@@ -15,6 +15,9 @@ import { CartComponent } from './pages/cart/cart.component';
 import { CategoryComponent } from './pages/category/category.component';
 import { CategoryAddComponent } from './pages/category-add/category-add.component';
 import { CategoryEditComponent } from './pages/category-edit/category-edit.component';
+import { ProductsAddComponent } from './pages/products-add/products-add.component';
+import { ProductsEditComponent } from './pages/products-edit/products-edit.component';
+import { ProductsComponent } from './pages/products/products.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { CategoryEditComponent } from './pages/category-edit/category-edit.compo
     CartComponent,
     CategoryComponent,
     CategoryAddComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    ProductsAddComponent,
+    ProductsEditComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
