@@ -28,31 +28,31 @@ export class ProductsService {
 
   getAllProducts(): Observable<IProducts[]>{
     const url = `${this.API}/products`;
-    return this.http.get<IProducts[]>(url)
+    return this.http.get<IProducts[]>(url,this.httpOptions)
   }
 
   getProduct(_id: string | null): Observable<IProducts> {
     const url = `${this.API}/products/${_id}`;
-    return this.http.get<IProducts>(url)
+    return this.http.get<IProducts>(url,this.httpOptions)
   }
 
   addProduct(products: IProducts):Observable<IProducts>{
     const url = `${this.API}/products`;
-    return this.http.post<IProducts>(url,products)
+    return this.http.post<IProducts>(url,products,this.httpOptions)
   }
 
   getCategory(): Observable<ICategory> {
     const url = `${this.API}/category`;
-    return this.http.get<ICategory>(url)
+    return this.http.get<ICategory>(url,this.httpOptions)
   }
 
   updateProduct(products: IProducts): Observable<IProducts> {
     const url = `${this.API}/products/${products._id}`;
-    return this.http.put<IProducts>(url, products);
+    return this.http.put<IProducts>(url, products,this.httpOptions);
   }
 
   deleteProduct(id: string | null): Observable<IProducts> {
     const url = `${this.API}/products/${id}`;
-    return this.http.delete<IProducts>(url)
+    return this.http.delete<IProducts>(url,this.httpOptions)
   }
 }

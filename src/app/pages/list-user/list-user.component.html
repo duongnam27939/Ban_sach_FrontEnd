@@ -15,23 +15,27 @@
                 <th scope="col" class="px-6 py-3">
                     Action
                 </th>
+                <th scope="col" class="px-6 py-3">
+                </th>
             </tr>
         </thead>
         <tbody>
             <tr 
             *ngFor="let item of user"
             class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <th scope="row" class="user_item px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                    {{item.name}}
                 </th>
-                <td class="px-6 py-4">
+                <td class="user_item px-6 py-4">
                     {{item.email}}
                 </td>
-                <td class="px-6 py-4">
+                <td class="user_item px-6 py-4">
                     {{item.role}}
                 </td>
                 <td class="px-6 py-4">
                     <button class="font-medium text-red-500 dark:text-blue-500 hover:underline" (click)="removeId(item._id!)" >Edit</button>
+                </td>
+                <td>
                     <a [routerLink]="[item._id,'edit']" class="m-6 ms-5 font-medium text-blue-600 dark:text-blue-500 hover:underline">Update</a>
                 </td>
             </tr>

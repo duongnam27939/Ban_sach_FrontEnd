@@ -36,15 +36,19 @@ export class LoginComponent {
       };
       this.auth.login(user).subscribe(
         (data: any) => {
-          console.log(data.auth);
-
+ 
+          console.log(data);
+          
           localStorage.setItem("user", JSON.stringify(data));
-          localStorage.setItem('token', data.token);
+          localStorage.setItem('token', data.accessToken);
           let token = localStorage.getItem('token');
+          console.log(token);
+          
           if (data.auth.role == "admin") {
             this.router.navigate(['/']);
           } else {
             this.router.navigate(['/'])
+            
           }
 
         },

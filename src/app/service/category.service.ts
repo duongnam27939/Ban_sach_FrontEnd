@@ -22,25 +22,25 @@ export class CategoryService {
 
   categoryAdd(category: ICategory): Observable<ICategory> {
     const url = `${this.API}/category`;
-    return this.http.post<ICategory>(url, category)
+    return this.http.post<ICategory>(url, category,this.httpOptions)
   }
 
   categoryUpdate(category: ICategory): Observable<ICategory> {
     const url = `${this.API}/category/${category._id}`;
-    return this.http.patch<ICategory>(url, category);
+    return this.http.patch<ICategory>(url, category,this.httpOptions);
   }
   getCategory(id: string | null): Observable<ICategory> {
     const url = `${this.API}/category/${id}`
-    return this.http.get<ICategory>(url)
+    return this.http.get<ICategory>(url,this.httpOptions)
   }
 
   getAllCategory(): Observable<ICategory[]> {
     const url = `${this.API}/category`
-    return this.http.get<ICategory[]>(url)
+    return this.http.get<ICategory[]>(url,this.httpOptions)
   }
 
   deleteCategory(id: string | null): Observable<ICategory> {
     const url = `${this.API}/category/${id}`
-    return this.http.delete<ICategory>(url)
+    return this.http.delete<ICategory>(url,this.httpOptions)
   }
 }
