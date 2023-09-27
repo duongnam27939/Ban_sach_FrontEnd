@@ -48,7 +48,7 @@ export class SignupComponent {
   onhandledSubmit() {
     this.submitted = true;
     this.auth.signup(this.formSignup.value).subscribe((data) => {
-      this.router.navigate(['/signup']);
+      this.router.navigate(['signup']);
     })
   }
 }
