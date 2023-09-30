@@ -5,39 +5,14 @@
             <h5 class="address_h5"> Danh mục sản phẩm</h5>
             <div class="address_category1">
                 <ul class="address_ul">
-                    <li class="address_li">
-                        <a class="address_a" href="#">
+                    <li class="address_li" *ngFor="let cate of category">
+                        <a class="address_a" [routerLink]="['/category-detail', cate._id]">
                             <div class="address_li1">
                                 <i class="fa-solid fa-book"></i>
-                                <p>Sách - Truyện tranh</p>
+                                <p>{{cate.name}}</p>
                             </div>
                         </a>
-                    </li>
-                    <li class="address_li">
-                        <a class="address_a" href="#">
-                            <div class="address_li1">
-                                <i class="fa-solid fa-palette"></i>
-                                <p>Dụng Cụ Vẽ - VPP</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="address_li">
-                        <a class="address_a" href="#">
-                            <div class="address_li1">
-                                <i class="fa-solid fa-computer-mouse"></i>
-                                <p>Bảng vẽ - Phụ kiện</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="address_li">
-                        <a class="address_a" href="#">
-                            <div class="address_li2">
-                                <i class="fa-solid fa-gift"></i>
-                                <p>Quà tặng - Đồ chơi</p>
-                            </div>
-                        </a>
-                    </li>
-  
+                    </li>  
                 </ul>
             </div>
         </div>
@@ -88,71 +63,22 @@
           </div>
   
           <div class="card_flex d-flex flex-wrap">
-              <div>
+              <div *ngFor="let item of products">
                   <div class="card" style="width: 18rem;">
-                      <a href="about"><img src="https://bookbuy.vn/Res/Images/Product/tieng-thet-duoi-bang_125579_1.png?w=250&h=350&mode=canvas&quality=90" class="card-img-top" alt="..."></a>
+                      <a routerLink="pages-detail/{{item._id}}"><img [src]="item.images" class="card-img-top" alt="..."></a>
                       <div class="card-body">
-                        <h5 class="card-title">Con Nít Con Nôi (Kiddie Kiddo) - Thơ Thiếu Nhi Song Ngữ Việt Anh (Tái bản)</h5>
-                        <p class="card-text">Con Nit Con Noi Thơ ca Văn học thiếu nhi Sách hay trong tuần Sách bán chạy nhất</p>
+                        <div>
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.author}}</p>
+                        </div>
                         <div class="card_style d-flex ">
-                          <p class="card-price">260.000₫ <del class="del_text"></del></p>
+                          <p class="card-price">{{ formatCurrency(item.price) }} <del class="del_text"></del></p>
                           <a href="#" class="btn_cart btn btn-danger"><i class="cart_icon fa-solid fa-cart-shopping"></i></a>
                       </div>
                       </div>
                     </div>
               </div>
-              <div>
-                  <div class="card" style="width: 18rem;">
-                      <a href="about"><img src="https://bookbuy.vn/Res/Images/Product/tieng-thet-duoi-bang_125579_1.png?w=250&h=350&mode=canvas&quality=90" class="card-img-top" alt="..."></a>
-                      <div class="card-body">
-                        <h5 class="card-title">Con Nít Con Nôi (Kiddie Kiddo) - Thơ Thiếu Nhi Song Ngữ Việt Anh (Tái bản)</h5>
-                        <p class="card-text">Con Nit Con Noi Thơ ca Văn học thiếu nhi Sách hay trong tuần Sách bán chạy nhất</p>
-                        <div class="card_style d-flex ">
-                            <p class="card-price">260.000₫ <del class="del_text"></del></p>
-                            <a href="#" class="btn_cart btn btn-danger"><i class="cart_icon fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                      </div>
-                    </div>
-              </div>
-              <div>
-                  <div class="card" style="width: 18rem;">
-                      <a href="about"><img src="https://bookbuy.vn/Res/Images/Product/tieng-thet-duoi-bang_125579_1.png?w=250&h=350&mode=canvas&quality=90" class="card-img-top" alt="..."></a>
-                      <div class="card-body">
-                        <h5 class="card-title">Con Nít Con Nôi (Kiddie Kiddo) - Thơ Thiếu Nhi Song Ngữ Việt Anh (Tái bản)</h5>
-                        <p class="card-text">Con Nit Con Noi Thơ ca Văn học thiếu nhi Sách hay trong tuần Sách bán chạy nhất</p>
-                        <div class="card_style d-flex ">
-                            <p class="card-price">260.000₫ <del class="del_text">145.000₫</del></p>
-                            <a href="#" class="btn_cart btn btn-danger"><i class="cart_icon fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                      </div>
-                    </div>
-              </div>
-              <div>
-                  <div class="card" style="width: 18rem;">
-                      <a href="about"><img src="https://bookbuy.vn/Res/Images/Product/tieng-thet-duoi-bang_125579_1.png?w=250&h=350&mode=canvas&quality=90" class="card-img-top" alt="..."></a>
-                      <div class="card-body">
-                        <h5 class="card-title">Con Nít Con Nôi (Kiddie Kiddo) - Thơ Thiếu Nhi Song Ngữ Việt Anh (Tái bản)</h5>
-                        <p class="card-text">Con Nit Con Noi Thơ ca Văn học thiếu nhi Sách hay trong tuần Sách bán chạy nhất</p>
-                        <div class="card_style d-flex ">
-                            <p class="card-price">260.000₫ <del class="del_text">145.000₫</del></p>
-                            <a href="#" class="btn_cart btn btn-danger"><i class="cart_icon fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                      </div>
-                    </div>
-              </div>
-              <div>
-                  <div class="card" style="width: 18rem;">
-                      <a href="about"><img src="https://bookbuy.vn/Res/Images/Product/tieng-thet-duoi-bang_125579_1.png?w=250&h=350&mode=canvas&quality=90" class="card-img-top" alt="..."></a>
-                      <div class="card-body">
-                        <h5 class="card-title">Con Nít Con Nôi (Kiddie Kiddo) - Thơ Thiếu Nhi Song Ngữ Việt Anh (Tái bản)</h5>
-                        <p class="card-text">Con Nit Con Noi Thơ ca Văn học thiếu nhi Sách hay trong tuần Sách bán chạy nhất</p>
-                        <div class="card_style d-flex ">
-                            <p class="card-price">260.000₫ <del class="del_text">145.000₫</del></p>
-                            <a href="#" class="btn_cart btn btn-danger"><i class="cart_icon fa-solid fa-cart-shopping"></i></a>
-                        </div>
-                      </div>
-                    </div>
-              </div>
+
           </div>
       </div>
   </aside>

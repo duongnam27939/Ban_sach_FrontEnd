@@ -21,7 +21,7 @@ export class ListUserComponent {
         this.user = this.user.filter(item =>item._id !== _id)
         setTimeout(()=>{
           alert('Xóa Tài khoản thành công!')
-        },1000)
+        },600)
       })
     }
   }

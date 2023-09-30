@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders,} from '@angular/common/http';
 import { ICategory } from '../interface/category';
 import { Observable } from 'rxjs'
+import { IProducts } from '../interface/products';
 
 @Injectable({
   providedIn: 'root'
@@ -29,8 +30,8 @@ export class CategoryService {
     const url = `${this.API}/category/${category._id}`;
     return this.http.patch<ICategory>(url, category,this.httpOptions);
   }
-  getCategory(id: string | null): Observable<ICategory> {
-    const url = `${this.API}/category/${id}`
+  getCategory(_id: string | null): Observable<ICategory> {
+    const url = `${this.API}/category/${_id}`
     return this.http.get<ICategory>(url,this.httpOptions)
   }
 
@@ -42,5 +43,10 @@ export class CategoryService {
   deleteCategory(id: string | null): Observable<ICategory> {
     const url = `${this.API}/category/${id}`
     return this.http.delete<ICategory>(url,this.httpOptions)
+  }
+
+  getproductByCategory(_id: string): Observable<IProducts> {
+    const url = `${this.API}/category/${_id}`;
+    return this.http.get<IProducts>(url, this.httpOptions);
   }
 }

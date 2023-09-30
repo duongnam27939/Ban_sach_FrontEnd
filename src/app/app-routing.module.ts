@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutUserComponent } from './Layout/layout-user/layout-user.component';
 import { HomepagesComponent } from './pages/homepages/homepages.component';
-import { AboutComponent } from './pages/about/about.component';
 import { LayoutAdminComponent } from './Layout/layout-admin/layout-admin.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -15,14 +14,17 @@ import { ProductsAddComponent } from './pages/products-add/products-add.componen
 import { ProductsEditComponent } from './pages/products-edit/products-edit.component';
 import { ListUserComponent } from './pages/list-user/list-user.component';
 import { UserEditComponent } from './pages/user-edit/user-edit.component';
+import { PagesDetailComponent } from './pages/pages-detail/pages-detail.component';
+import { CategoryDetailComponent } from './pages/category-detail/category-detail.component';
 
 
 const routes: Routes = [
   {
     path: '', component: LayoutUserComponent, children: [
       { path: '', component: HomepagesComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'cart', component: CartComponent }
+      { path: 'pages-detail/:id', component: PagesDetailComponent },
+      {path:'category-detail/:id',component:CategoryDetailComponent},
+      { path: 'cart', component: CartComponent },
 
     ]
   },

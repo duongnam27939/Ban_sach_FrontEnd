@@ -23,7 +23,10 @@ export class ProductsAddComponent {
     quantity: [0, [Validators.required]],
     images: ['', [Validators.required]],
     categoryId: ['', [Validators.required]],
-    sale: [0, [Validators.required]]
+    sale: [0, [Validators.required]],
+    tags:['',[Validators.required]],
+    discount:[0, [Validators.required]],
+    status:['',[Validators.required]],
   })
 
   constructor(
@@ -32,8 +35,8 @@ export class ProductsAddComponent {
     private routers: Router
   ) {
     this.productsService.getCategory().subscribe((response: any) => {
-      this.category = response
-      console.log(response);
+      this.category = response.data
+      console.log(response.data);
 
     })
   }
@@ -49,7 +52,11 @@ export class ProductsAddComponent {
         quantity: this.categoryForm.value.quantity || 0,
         images: this.categoryForm.value.images || '',
         sale: this.categoryForm.value.sale || 0,
+        tags:this.categoryForm.value.tags || '',
+        discount: this.categoryForm.value.discount || 0,
+        status:this.categoryForm.value.status || '',
         categoryId: this.categoryForm.value.categoryId || '',
+        
       }
       console.log(product);     
       if (confirm('Bạn có chắc muốn thêm sản phẩm này không!')) {
@@ -57,7 +64,7 @@ export class ProductsAddComponent {
           this.routers.navigate(['admin/products'])
           setTimeout(() => {
             alert("Thêm sản phẩm thành công!")
-          }, 2000);
+          }, 600);
         })
       }
     }

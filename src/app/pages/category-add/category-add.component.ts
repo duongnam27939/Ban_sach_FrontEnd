@@ -32,7 +32,7 @@ export class CategoryAddComponent {
           this.routers.navigate(['admin/category'])
           setTimeout(() => {
             alert('Thêm danh mục thành công!')
-          }, 3000);
+          }, 600);
         })
       }
     }

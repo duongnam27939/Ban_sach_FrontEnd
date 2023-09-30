@@ -55,7 +55,7 @@ export class UserEditComponent {
           this.routers.navigate(['admin/user']);
           setTimeout(()=>{
             alert('Cập nhập sản phẩm thành công!')
-          },1000)
+          },600)
         })
       }
     }

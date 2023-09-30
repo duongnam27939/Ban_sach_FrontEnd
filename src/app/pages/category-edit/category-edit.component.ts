@@ -48,7 +48,7 @@ export class CategoryEditComponent {
           this.routers.navigate(['admin/category'])
           setTimeout(() => {
             alert('Cập nhập danh mục thành công!')
-          }, 1000);
+          }, 600);
         })
       }
     }

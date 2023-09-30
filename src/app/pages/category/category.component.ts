@@ -15,9 +15,9 @@ export class CategoryComponent {
   constructor(private category: CategoryService,
     private route: ActivatedRoute,
     private routers: Router) {
-    this.category.getAllCategory().subscribe((data: any) => {
-      this.categorys = data
-      console.log(data);
+    this.category.getAllCategory().subscribe((response: any) => {
+      this.categorys = response.data
+      console.log(response.data);
       
     })
   }
@@ -28,7 +28,7 @@ export class CategoryComponent {
         this.categorys = this.categorys.filter(item=>item._id !== _id)
         setTimeout(()=>{
           alert('Xóa Danh mục thành công')
-        },3000)
+        },600)
       })
     }
     

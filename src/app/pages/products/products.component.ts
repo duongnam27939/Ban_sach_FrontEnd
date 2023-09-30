@@ -21,8 +21,13 @@ export class ProductsComponent {
   }
 
   removeId(_id:any){
-    this.productsService.deleteProduct(_id).subscribe((data)=>{
-      this.products = this.products.filter(item=> item._id !== _id )
-    })
+    if (confirm('Bạn có muốn xóa sản phẩm này ko!')) {
+      this.productsService.deleteProduct(_id).subscribe((data)=>{
+        this.products = this.products.filter(item=> item._id !== _id )
+        setTimeout(()=>{
+          alert('Xóa sản phẩm thành công!')
+        },600)
+      })
+    }
   }
 }
