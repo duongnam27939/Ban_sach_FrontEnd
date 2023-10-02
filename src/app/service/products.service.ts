@@ -57,14 +57,17 @@ export class ProductsService {
     return this.http.delete<IProducts>(url,this.httpOptions)
   }
 
-  // getProductsByCategory(categoryName: string): Observable<IProducts[]> {
-  //   const url = `${this.API}/products?category=${categoryName}`;
-  //   return this.http.get<IProducts[]>(url, this.httpOptions);
-  // }
 
   getProductsByCategory(categoryId: string): Observable<any[]> {
     const url = `${this.API}/products?category=${categoryId}`;
     return this.http.get<any[]>(url,this.httpOptions);
+  }
+
+  uploadImage(vals: any): Observable<any> {
+    {
+      let data = vals;
+      return this.http.post(`https://api.cloudinary.com/v1_1/doa7mkkpq/image/upload`, data)
+    }
   }
 
 }

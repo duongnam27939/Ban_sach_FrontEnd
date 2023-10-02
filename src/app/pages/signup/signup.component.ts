@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/auth';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
@@ -48,6 +49,15 @@ export class SignupComponent {
   onhandledSubmit() {
     this.submitted = true;
     this.auth.signup(this.formSignup.value).subscribe((data) => {
+      Swal.fire({
+        position: 'center',
+        title: 'Đăng kí thành công',
+        text: 'Bạn đã đăng kí thành công!',
+        icon: 'success',
+        confirmButtonText: 'OK',
+        // iconHtml: '<i class="fas fa-user-check style="font-size: 10px;"></i>',
+        iconHtml: '<i class="fas fa-check-circle"></i>'
+      });
       this.router.navigate(['signup']);
     })
   }

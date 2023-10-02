@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interface/auth';
 import { UserService } from 'src/app/service/user.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-edit',
@@ -41,23 +42,31 @@ export class UserEditComponent {
     })
   }
 
-  onHandleSubmit(){
+  onHandleSubmit() {
     this.submitValue = true;
     if (this.userForm.valid) {
       const user: User = {
         _id: this.user._id,
-        name:this.userForm.value.name || '',
-        email:this.userForm.value.email || '',
-        role:this.userForm.value.role || ''
+        name: this.userForm.value.name || '',
+        email: this.userForm.value.email || '',
+        role: this.userForm.value.role || ''
       }
-      if (confirm('Bạn có muốn cập nhập lại tài khoản không!')) {
-        this.userService.updateUser(user).subscribe(data=>{
-          this.routers.navigate(['admin/user']);
-          setTimeout(()=>{
-            alert('Cập nhập sản phẩm thành công!')
-          },600)
+
+      this.userService.updateUser(user).subscribe(data => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Cập nhập Tài khoản thành công!',
+          text: 'Tài khoản đã được cập nhập thành công!',
+          showConfirmButton: false,
+          iconHtml: '<i class="fas fa-check-circle"></i>',
+          timer: 2000
         })
-      }
+        this.routers.navigate(['admin/user']);
+      }, (error) => {
+        alert("Cập nhập không thành công")
+
+      })
     }
   }
 }

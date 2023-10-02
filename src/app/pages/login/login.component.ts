@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/interface/auth';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -36,14 +37,18 @@ export class LoginComponent {
       };
       this.auth.login(user).subscribe(
         (data: any) => {
- 
           console.log(data);
-          
           localStorage.setItem("user", JSON.stringify(data));
           localStorage.setItem('token', data.accessToken);
           let token = localStorage.getItem('token');
           console.log(token);
-          
+          Swal.fire({
+            title: 'Đăng nhập thành công',
+            text: 'Bạn đã đăng nhập thành công!',
+            icon: 'success',
+            confirmButtonText: 'OK',
+            iconHtml: '<i class="fas fa-check-circle"></i>'
+          });
           if (data.auth.role == "admin") {
             this.router.navigate(['/']);
           } else {

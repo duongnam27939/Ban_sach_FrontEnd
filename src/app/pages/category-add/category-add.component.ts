@@ -3,6 +3,7 @@ import { ICategory } from 'src/app/interface/category';
 import { FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/service/category.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category-add',
@@ -27,15 +28,21 @@ export class CategoryAddComponent {
       const category: ICategory = {
         name: this.categoryForm.value.name || ''
       }
-      if (confirm('Bạn có muốn thêm danh mục này ko!')) {
-        this.cate.categoryAdd(category).subscribe((category) => {
-          this.routers.navigate(['admin/category'])
-          setTimeout(() => {
-            alert('Thêm danh mục thành công!')
-          }, 600);
+      this.cate.categoryAdd(category).subscribe((category) => {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'thêm Danh mục thành công!',
+          text: 'Danh mục đã được thêm thành công!',
+          showConfirmButton: false,
+          iconHtml: '<i class="fas fa-check-circle"></i>',
+          timer: 2000
         })
-      }
+        this.routers.navigate(['admin/category'])
+      }, (error) => {
+        alert("Thêm không thành công")
+
+      })
     }
   }
-
 }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ICategory } from 'src/app/interface/category';
 import { CategoryService } from 'src/app/service/category.service';
 import {FormBuilder,Validators} from '@angular/forms'
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -43,14 +44,22 @@ export class CategoryEditComponent {
         name: this.categoryForm.value.name || '',
       }
       
-      if (confirm('Bạn có muốn cập nhập danh mục này ko!')) {
+   
         this.cate.categoryUpdate(category).subscribe(data => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cập nhập danh mục thành công!',
+            text: 'Danh mục đã được cập nhập thành công!',
+            showConfirmButton: false,
+            iconHtml: '<i class="fas fa-check-circle"></i>',
+            timer: 2000
+          })
           this.routers.navigate(['admin/category'])
-          setTimeout(() => {
-            alert('Cập nhập danh mục thành công!')
-          }, 600);
+        }, (error) => {
+          alert("Cập nhập không thành công")
+        
         })
       }
-    }
   }
 }

@@ -3,6 +3,7 @@ import { IProducts } from 'src/app/interface/products';
 import { FormBuilder,Validators } from '@angular/forms';
 import { ProductsService } from 'src/app/service/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products-edit',
@@ -85,14 +86,21 @@ export class ProductsEditComponent {
         
       }
       console.log(product);     
-      if (confirm('Bạn có chắc muốn cập nhập sản phẩm này không!')) {
         this.productsService.updateProduct(product).subscribe((data) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cập nhập sản phẩm thành công!',
+            text: 'Sản phẩm đã được cập nhập thành công!',
+            showConfirmButton: false,
+            iconHtml: '<i class="fas fa-check-circle"></i>',
+            timer: 2000
+          })
           this.routers.navigate(['admin/products'])
-          setTimeout(() => {
-            alert("Cập nhập sản phẩm thành công!")
-          }, 600);
+        }, (error) => {
+          alert("Cập nhập không thành công")
+        
         })
-      }
     }
   }
 }

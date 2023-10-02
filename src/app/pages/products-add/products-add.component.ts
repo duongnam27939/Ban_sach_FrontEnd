@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms'
 import { ProductsService } from 'src/app/service/products.service';
 import { IProducts } from 'src/app/interface/products';
-import { ICategory } from 'src/app/interface/category';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-products-add',
@@ -41,6 +41,29 @@ export class ProductsAddComponent {
     })
   }
 
+  onSelectImage(event: any) {
+    this.files.push(...event.addedFiles);
+    const file_data = this.files[0]
+    const data = new FormData();
+    data.append('file', file_data);
+    data.append('upload_preset', 'upload');
+    data.append('cloud_name', 'doa7mkkpq');
+    this.productsService.uploadImage(data,
+    ).subscribe(response => {
+      this.url.push(response.secure_url)
+      console.log(this.url);
+    }
+    )
+  }
+
+  files: any[] = [];
+  url: any = []
+  onRemovem(event: any) {
+    console.log(event);
+    this.files.splice(this.files.indexOf(event), 1);
+
+  }
+
   onhandledSubmit() {
     this.submitValue = true
     if (this.categoryForm.valid) {
@@ -59,14 +82,22 @@ export class ProductsAddComponent {
         
       }
       console.log(product);     
-      if (confirm('Bạn có chắc muốn thêm sản phẩm này không!')) {
         this.productsService.addProduct(product).subscribe((data) => {
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'thêm sản phẩm thành công!',
+            text: 'Sản phẩm đã được thêm thành công!',
+            showConfirmButton: false,
+            iconHtml: '<i class="fas fa-check-circle"></i>',
+            timer: 2000
+          })
           this.routers.navigate(['admin/products'])
-          setTimeout(() => {
-            alert("Thêm sản phẩm thành công!")
-          }, 600);
+        }, (error) => {
+          alert("Thêm không thành công")
+        
         })
-      }
+      
     }
   }
 }
