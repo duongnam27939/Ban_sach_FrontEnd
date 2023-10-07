@@ -59,5 +59,22 @@ export class ProductsComponent {
   }
 
 
-  
+  onSearch() {
+    console.log(`product:`, this.searchValue);
+    this.isShown = true;
+    if (this.searchValue === "") {
+      this.productsService.getAllProducts().subscribe((response: any) => {
+        this.products = response.products;
+        console.log(response.products);
+      });
+    } else {
+      this.productsService.getAllProducts().subscribe((response: any) => {
+        this.products = response.products.filter((product: any) => {
+          const productNameMatch = product.name.toLowerCase().includes(this.searchValue.toLowerCase());
+          const authorNameMatch = product.author.toLowerCase().includes(this.searchValue.toLowerCase());
+          return productNameMatch || authorNameMatch;
+        });
+      });
+    }
+  }
 }
