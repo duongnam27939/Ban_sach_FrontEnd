@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IProducts } from 'src/app/interface/products';
+import { ProductsService } from 'src/app/service/products.service';
 
 @Component({
   selector: 'app-layout-user',
@@ -6,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout-user.component.scss']
 })
 export class LayoutUserComponent {
-
+  
 }

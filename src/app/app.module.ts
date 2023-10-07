@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDropzoneModule } from 'ngx-dropzone';
+import { FormsModule } from '@angular/forms';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -49,6 +51,8 @@ import { CategoryDetailComponent } from './pages/category-detail/category-detail
     HttpClientModule,
     ReactiveFormsModule,
     NgxDropzoneModule,
+    FormsModule,
+    ClickOutsideModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -87,11 +87,30 @@ input:focus {
 
 .rearch-btn {
     position: absolute;
-    top: 25%;
-    left: 46%;
+    top: 20%;
+    left: 93%;
     border: none;
     background-color: #FFFFFF;
 }
+
+
+.position-absolute {
+    z-index: 99;
+    width: 460px;
+}
+
+.text-rearch1 {
+    padding: 20px;
+    width: 350px;
+}
+
+.reach-imgaes{
+    width: 70px;
+    height: 100px;
+    margin-left: 15px;
+}
+
+
 
 .icon-btn {
     color: #f15c22;

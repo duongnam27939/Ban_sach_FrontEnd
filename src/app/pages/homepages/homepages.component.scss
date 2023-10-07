@@ -180,12 +180,17 @@ aside {
 .card-title {
   font-size: 14px;
   text-align: left;
-  height: 20px;
+  height: 37px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
   
 }
 
 .card-text {
-  margin-top: 20px;
+  margin-top: -6px;
   font-size: 13px;
   height: 30px;
   color: #1d9d74;

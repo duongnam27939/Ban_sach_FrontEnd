@@ -12,6 +12,9 @@ import Swal from 'sweetalert2';
 export class ProductsComponent {
   products!: IProducts[];
   category!: any[];
+  isShown: boolean = true;
+  searchValue: any;
+  
 
   constructor(private productsService: ProductsService,
     private route: ActivatedRoute) {
@@ -23,7 +26,7 @@ export class ProductsComponent {
 
   removeId(_id: any) {
     this.productsService.deleteProduct(_id).subscribe((data) => {
-      this.products = this.products.filter(item => item._id !== _id)
+      
       Swal.fire({
         title: 'Xác nhận xóa',
         text: 'Bạn có chắc chắn muốn xóa sản phẩm?',
@@ -43,6 +46,7 @@ export class ProductsComponent {
             timer: 2000,
             iconHtml: '<i class="fas fa-check-circle"></i>'
           });
+          this.products = this.products.filter(item => item._id !== _id)
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           Swal.fire(
             'Hủy bỏ',
@@ -53,4 +57,7 @@ export class ProductsComponent {
       });
     })
   }
+
+
+  
 }
