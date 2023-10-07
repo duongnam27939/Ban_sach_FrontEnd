@@ -59,6 +59,22 @@ export class CategoryComponent {
   }
 
 
+  onSearch() {
+    console.log(`category:`, this.searchValue);
+    this.isShown = true;
+    if (this.searchValue === "") {
+      this.category.getAllCategory().subscribe((response: any) => {
+        this.categorys = response.data
+        console.log(response.data);
   
+      })
+    } else {
+      this.category.getAllCategory().subscribe((response: any) => {
+        this.categorys = response.data.filter((data: any) => {
+          return data.name.toLowerCase().includes(this.searchValue.toLowerCase());
+        });
+      });
+    }
+  }
 
 }
